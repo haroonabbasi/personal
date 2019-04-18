@@ -5,6 +5,8 @@ import Header from '../components/Header'
 import Main from '../components/Main'
 import Footer from '../components/Footer'
 
+import Doodle from "../common/doodle";
+
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
@@ -92,6 +94,35 @@ class IndexPage extends React.Component {
   render() {
     return (
       <Layout location={this.props.location}>
+
+      <Doodle rule={`
+      :doodle {
+        @grid: 1x3 / 100vmax;
+        position: absolute;
+        top: 0; left: 0;
+        z-index: 3;
+      }
+    
+      @size: 100% 150%;
+      position: absolute;
+      
+      background: @m(100, (
+        linear-gradient(transparent, @p(
+          #FFFDE1@repeat(2, @p([0-9a-f])), 
+          #FB3569@repeat(2, @p([0-9a-f])) 
+        ))
+        @r(0%, 100%) @r(0%, 100%) /
+        @r(1px) @r(23vmin)
+        no-repeat
+      ));
+    
+      will-change: transform;
+      animation: f 20s linear calc(-20s / @size() * @i()) infinite;
+      @keyframes f {
+        from { transform: translateY(-100%) }
+        to { transform: translateY(100%) }
+      }`
+    } />      
         <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
           <div id="wrapper">
             <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />

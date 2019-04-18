@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 const Footer = (props) => (
     <footer id="footer" style={props.timeout ? {display: 'none'} : {}}>
         <p className="copyright">&copy; Built with: <a href="https://www.gatsbyjs.org/">Gatsby.js</a></p>
+        <p className="copyright">Built with: Background Animation created using Css-Doodle By  <a href="https://twitter.com/yuanchuan23/status/1117329462566227969">Yuan Chuan</a></p>        
     </footer>
 )
 
